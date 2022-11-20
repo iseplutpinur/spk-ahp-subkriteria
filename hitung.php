@@ -85,7 +85,7 @@ $hasil_bobot = get_hasil_bobot($data);
                     <td><?= $key ?></td>
                     <td><?= $ALTERNATIF[$key] ?></td>
                     <?php foreach ($val as $k => $v) : ?>
-                        <td><?= round($v, 3) ?></td>
+                        <td><?= round($v ?? 0, 3) ?></td>
                     <?php endforeach ?>
                 </tr>
             <?php endforeach; ?>
