@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<?php
-	$q = esc_field($_GET['q']);
+	$q = esc_field(isset($_GET['q']) ? $_GET['q'] : '');
 	$rows = $db->get_results("SELECT * FROM tb_alternatif WHERE nama_alternatif LIKE '%$q%' ORDER BY kode_alternatif");
 	$no = 0;
 	foreach ($rows as $row) : ?>

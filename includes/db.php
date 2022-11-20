@@ -29,7 +29,7 @@ class DB
     public function get_results($sql)
     {
         $query = $this->query($sql);
-        $arr = array();
+        $arr = [];
         while ($row = mysqli_fetch_object($query)) {
             $arr[] = $row;
         }

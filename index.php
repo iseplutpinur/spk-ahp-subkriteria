@@ -1,7 +1,7 @@
 <?php
 include 'functions.php';
 if (empty($_SESSION['login']))
-  header("location:login.php");
+  header("location:login.php?m=login&act=login");
 ?>
 <!DOCTYPE html>
 <html lang="en">

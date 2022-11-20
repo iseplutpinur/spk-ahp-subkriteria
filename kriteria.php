@@ -6,7 +6,7 @@
         <form class="form-inline">
             <input type="hidden" name="m" value="kriteria" />
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="Pencarian. . ." name="q" value="<?= $_GET['q'] ?>" />
+                <input class="form-control" type="text" placeholder="Pencarian. . ." name="q" value="<?= @isset($_GET['q'])?$_GET['q']:'' ?>" />
             </div>
             <div class="form-group">
                 <button class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
@@ -15,7 +15,7 @@
                 <a class="btn btn-primary" href="?m=kriteria_tambah"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
             </div>
             <div class="form-group">
-                <a class="btn btn-default" href="cetak.php?m=kriteria&a=<?= $_GET['q'] ?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Cetak</a>
+                <a class="btn btn-default" href="cetak.php?m=kriteria&a=<?= isset($_GET['q'])?$_GET['q']:'' ?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Cetak</a>
             </div>
         </form>
     </div>
@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <?php
-            $q = esc_field($_GET['q']);
+            $q = esc_field(isset($_GET['q'])?$_GET['q']:'');
             $rows = $db->get_results("SELECT * FROM tb_kriteria WHERE nama_kriteria LIKE '%$q%' ORDER BY kode_kriteria");
             $no = 0;
             foreach ($rows as $row) : ?>

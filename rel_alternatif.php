@@ -6,7 +6,7 @@
         <form class="form-inline">
             <input type="hidden" name="m" value="rel_alternatif" />
             <div class="form-group">
-                <input class="form-control" type="text" name="q" value="<?= $_GET['q'] ?>" placeholder="Pencarian..." />
+                <input class="form-control" type="text" name="q" value="<?= isset($_GET['q']) ? $_GET['q'] : '' ?>" placeholder="Pencarian..." />
             </div>
             <div class="form-group">
                 <button class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>

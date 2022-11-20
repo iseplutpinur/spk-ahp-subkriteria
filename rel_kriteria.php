@@ -7,8 +7,8 @@ if ($_POST) include 'aksi.php';
 $rows = $db->get_results("SELECT k.nama_kriteria, rk.ID1, rk.ID2, nilai 
     FROM tb_rel_kriteria rk INNER JOIN tb_kriteria k ON k.kode_kriteria=rk.ID1 
     ORDER BY ID1, ID2");
-$criterias = array();
-$data = array();
+$criterias = [];
+$data = [];
 foreach ($rows as $row) {
     $criterias[$row->ID1] = $row->nama_kriteria;
     $data[$row->ID1][$row->ID2] = $row->nilai;

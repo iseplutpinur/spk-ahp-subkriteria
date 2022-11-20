@@ -1,10 +1,14 @@
 <div class="page-header">
-    <center><h1>Perhitungan & Perangkingan</h1></center>
+    <center>
+        <h1>Perhitungan & Perangkingan</h1>
+    </center>
 </div>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <center><h3 class="panel-title">Hasil Analisa</h3></center>
+        <center>
+            <h3 class="panel-title">Hasil Analisa</h3>
+        </center>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped">
@@ -35,7 +39,7 @@
 function get_hasil_bobot($data)
 {
     global $SUB;
-    $arr = array();
+    $arr = [];
     foreach ($data as $key => $val) {
         foreach ($val as $k => $v) {
             $arr[$key][$k] = $SUB[$v]['nilai_sub'];
@@ -45,10 +49,12 @@ function get_hasil_bobot($data)
 }
 $hasil_bobot = get_hasil_bobot($data);
 ?>
-            
+
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <center><h3 class="panel-title">Hasil Pembobotan</h3></center>
+        <center>
+            <h3 class="panel-title">Hasil Pembobotan</h3>
+        </center>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped">
@@ -89,7 +95,9 @@ $hasil_bobot = get_hasil_bobot($data);
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <center><h3 class="panel-title">Perangkingan</h3></center>
+        <center>
+            <h3 class="panel-title">Perangkingan</h3>
+        </center>
     </div>
     <div class="table-responsive">
         <table class="table table-hover table-bordered table-striped">
@@ -105,11 +113,11 @@ $hasil_bobot = get_hasil_bobot($data);
             function get_total($hasil_bobot, $rata)
             {
                 global $SUB;
-                $arr = array();
+                $arr = [];
 
                 foreach ($hasil_bobot as $key => $val) {
                     foreach ($val as $k => $v) {
-                        $arr[$key] += $v * $rata[$k];
+                        $arr[$key] = isset($arr[$key]) ? ($arr[$key] += $v * $rata[$k]) : 0;
                     }
                 }
                 return $arr;
@@ -131,13 +139,19 @@ $hasil_bobot = get_hasil_bobot($data);
         <?php
         $best = $rows[0]->kode_alternatif;
         ?>
-        <center><p>Jadi pilihan terbaik adalah <strong><?= $ALTERNATIF[$best] ?></strong> dengan nilai <strong><?= round($total[$best], 5) ?></strong></p></center>
-        <center><p><a class="btn btn-default" target="_blank" href="cetak.php?m=hitung"><span class="glyphicon glyphicon-print"></span> Cetak</a></p></center>
+        <center>
+            <p>Jadi pilihan terbaik adalah <strong><?= $ALTERNATIF[$best] ?></strong> dengan nilai <strong><?= round($total[$best], 5) ?></strong></p>
+        </center>
+        <center>
+            <p><a class="btn btn-default" target="_blank" href="cetak.php?m=hitung"><span class="glyphicon glyphicon-print"></span> Cetak</a></p>
+        </center>
     </div>
 </div>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <center><h3 class="panel-title">Grafik</h3></center>
+        <center>
+            <h3 class="panel-title">Grafik</h3>
+        </center>
     </div>
     <div class="panel-body">
         <style>
@@ -155,7 +169,7 @@ $hasil_bobot = get_hasil_bobot($data);
                 $data[$row->nama_alternatif] = $row->total * 1;
             }
 
-            $chart = array();
+            $chart = [];
 
             $chart['chart']['type'] = 'column';
             $chart['chart']['options3d'] = array(

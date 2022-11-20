@@ -19,8 +19,8 @@ function input_post($key)
         return $_POST[$key];
 }
 
-$mod = $_GET['m'];
-$act = $_GET['act'];
+$mod = isset($_GET['m']) ? $_GET['m'] : '';
+$act = isset($_GET['act']) ? $_GET['act'] : '';
 
 $nRI = array(
     1 => 0,
@@ -57,7 +57,7 @@ foreach ($rows as $row) {
 function get_relkriteria()
 {
     global $db;
-    $data = array();
+    $data = [];
     $rows = $db->get_results("SELECT k.nama_kriteria, rk.ID1, rk.ID2, nilai 
         FROM tb_rel_kriteria rk INNER JOIN tb_kriteria k ON k.kode_kriteria=rk.ID1 
         ORDER BY ID1, ID2");
@@ -75,9 +75,9 @@ function get_rel_alternatif($kriteria = '')
        FROM tb_rel_alternatif ra 
        INNER JOIN tb_alternatif a ON a.kode_alternatif = ra.kode_alternatif
        LEFT JOIN tb_sub s ON s.kode_sub=ra.kode_sub
-       WHERE nama_alternatif LIKE '%" . esc_field($_GET['q']) . "%'
+       WHERE nama_alternatif LIKE '%" . esc_field(isset($_GET['q']) ? $_GET['q'] : '') . "%'
        ORDER BY kode_alternatif, ra.kode_kriteria");
-    $arr = array();
+    $arr = [];
     foreach ($rows as $row) {
         $arr[$row->kode_alternatif][$row->kode_kriteria]  = $row->kode_sub;
     }
@@ -150,18 +150,18 @@ function get_sub_option($selected = '', $kode_kriteria)
     return $a;
 }
 
-function get_baris_total($matriks = array())
+function get_baris_total($matriks = [])
 {
-    $total = array();
+    $total = [];
     foreach ($matriks as $key => $value) {
         foreach ($value as $k => $v) {
-            $total[$k] += $v;
+            $total[$k] = isset($total[$k]) ? ($total[$k] + $v) : (0 + $v);
         }
     }
     return $total;
 }
 
-function normalize($matriks = array(), $total = array())
+function normalize($matriks = [], $total = [])
 {
 
     foreach ($matriks as $key => $value) {
@@ -174,16 +174,16 @@ function normalize($matriks = array(), $total = array())
 
 function get_rata($normal)
 {
-    $rata = array();
+    $rata = [];
     foreach ($normal as $key => $value) {
         $rata[$key] = array_sum($value) / count($value);
     }
     return $rata;
 }
 
-function mmult($matriks = array(), $rata = array())
+function mmult($matriks = [], $rata = [])
 {
-    $arr = array();
+    $arr = [];
     foreach ($matriks as $key => $val) {
         foreach ($val as $k => $v) {
             $arr[$key][$k] = $v * $rata[$k];
@@ -195,6 +195,7 @@ function mmult($matriks = array(), $rata = array())
 function consistency_measure($matriks, $rata)
 {
     $matriks = mmult($matriks, $rata);
+    $data = [];
     foreach ($matriks as $key => $value) {
         $data[$key] = array_sum($value) / $rata[$key];
     }
@@ -206,14 +207,14 @@ function get_rank($array)
     $data = $array;
     arsort($data);
     $no = 1;
-    $new = array();
+    $new = [];
     foreach ($data as $key => $value) {
         $new[$key] = $no++;
     }
     return $new;
 }
 
-function FAHP_save($total = array())
+function FAHP_save($total = [])
 {
     global $db;
 

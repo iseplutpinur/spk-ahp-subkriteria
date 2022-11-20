@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <?php
-    $q = esc_field($_GET['q']);
+    $q = esc_field(isset($_GET['q']) ? $_GET['q'] : '');
     $rows = $db->get_results("SELECT * FROM tb_alternatif 
         WHERE kode_alternatif LIKE '%$q%' 
         OR nama_alternatif LIKE '%$q%'

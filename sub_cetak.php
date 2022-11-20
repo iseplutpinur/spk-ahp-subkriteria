@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <?php
-    $q = esc_field($_GET['q']);
+    $q = esc_field(isset($_GET['q']) ? $_GET['q'] : '');
     $rows = $db->get_results("SELECT * FROM tb_sub s
         INNER JOIN tb_kriteria k ON s.kode_kriteria=k.kode_kriteria 
         WHERE nama_sub LIKE '%$q%' ORDER BY k.kode_kriteria, s.kode_sub");
