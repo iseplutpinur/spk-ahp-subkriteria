@@ -26,7 +26,7 @@ if (empty($_SESSION['login']))
 <body>
   <nav class="nav-collapse bg-primary">
     <div class="container">
-      <h3 align="center">Sistem Pendukung Keputusan Pemilihan Kandidat Ketua Karang Taruna</h3>    
+      <h3 align="center">Penentuan Promosi Jabatan Metode AHP</h3>
     </div>
   </nav>
   <nav class="navbar navbar-default navbar-static-top">
@@ -58,7 +58,7 @@ if (empty($_SESSION['login']))
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> User<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <?php if ($_SESSION['level'] == 'admin') : ?>
-              <li><a href="?m=user"><span class="glyphicon glyphicon-user"></span> Data User</a></li>
+                <li><a href="?m=user"><span class="glyphicon glyphicon-user"></span> Data User</a></li>
               <?php endif ?>
               <li><a href="?m=password"><span class="glyphicon glyphicon-pencil"></span> Ubah Password</a></li>
               <li><a href="aksi.php?act=logout"><span class="glyphicon glyphicon-remove-sign"></span> LogOut</a></li>

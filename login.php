@@ -13,10 +13,10 @@
   <script src="assets/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="padding: 0;">
   <nav class="navbar navbar-static-top bg-primary">
     <div class="container">
-      <h3 align="center">Sistem Pendukung Keputusan Pemilihan Kandidat Ketua Karang Taruna</h3>    
+      <h3 align="center">Penentuan Promosi Jabatan Metode AHP</h3>
     </div>
   </nav>
   <div class="container">
