@@ -13,7 +13,7 @@ if (empty($_SESSION['login']))
   <link rel="icon" href="favicon.ico" />
   <link rel="icon" href="favicon.ico" />
 
-  <title>SPK Pemilihan Kandidat Ketua Karang Taruna</title>
+  <title>SPK AHP Penentuan Promosi Jabatan</title>
   <link href="assets/css/sandstone-bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/general.css" rel="stylesheet" />
   <script src="assets/js/jquery.min.js"></script>
